@@ -1,6 +1,6 @@
 import UIKit
 
-class StoryTableView: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class StoryTableView: UIViewController, UITableViewDelegate {
 
     private let stories: NSArray = ["First","Second","Third"]
     private var myTableView: UITableView!
@@ -19,6 +19,10 @@ class StoryTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.view.addSubview(myTableView)
     }
 
+}
+
+extension StoryTableView : UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Num: \(indexPath.row)")
         print("Value: \(stories[indexPath.row])")
@@ -33,4 +37,5 @@ class StoryTableView: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.textLabel!.text = "\(stories[indexPath.row])"
         return cell
     }
+    
 }
